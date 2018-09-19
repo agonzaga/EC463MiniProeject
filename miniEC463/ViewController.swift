@@ -37,16 +37,22 @@ import GoogleSignIn
 class ViewController: UIViewController, GIDSignInUIDelegate {
     // Global Variables
     let fileName = "values.txt"
-    let dbPath = ""
+    let dbPath = "Users/andregonzaga/Desktop/miniProjectDB"
     let insertStatementString = "INSERT INTO User1 (Temperature, Humidity) VALUES (?, ?);"
     let queryStatementString = "SELECT * FROM Contact;"
+    var itemsArray: Array<Substring> = ["1111", "2222"]
+    var ind = 0
+    
+    struct GlobalVariables {
+        static var itemsArray: Array<Substring> = ["1111", "2222"]
+    }
     
     // Functions
     // Login
     fileprivate func setGoogleSignIn(){
         //google
         let googleSignIn = GIDSignInButton()
-        googleSignIn.frame = CGRect(x: 16, y: 116, width: view.frame.width - 32, height: 50)
+        googleSignIn.frame = CGRect(x: 16, y: 62, width: view.frame.width - 32, height: 50)
         view.addSubview(googleSignIn)
         
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -55,7 +61,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setGoogleSignIn()
-    }
+    }ß
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -150,12 +156,14 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
             do {
                 let text = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
                 let splitText = text.split(separator: "\n")
+                GlobalVariables.itemsArray = splitText
                 var db: OpaquePointer? = nil
                 let createTableString = """
                     CREATE TABLE User1(
                     Temperature INT PRIMARY KEY NOT NULL,
                     Humidity INT NOT NULL);
                     """
+                
                 db = openDatabase()
                 createTable(db: db, createTableString: createTableString)
                 for item in splitText {
@@ -173,8 +181,55 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     
-    @IBAction func showValuesButton(_ sender: Any) {
+    @IBAction func activateSensorButton(_ sender: Any) {
+        // Cloud
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let localFile = URL(string: "Users/andregonzaga/Desktop/values.txt")!
+        let dbRef = storageRef.child("database")
+        let spaceRef = storageRef.child("database/values.txt")
+    
+        // Upload the file to the path "images/rivers.jpg"
+        let uploadTask = spaceRef.putFile(from: localFile, metadata: nil) { metadata, error in
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            // Metadata contains file metadata such as size, content-type.
+            let size = metadata.size
+            // You can also access to download URL after upload.
+            storageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+            }
+        }
+        
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    // Text Fields
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var humLabel: UILabel!
+    
+    @IBAction func buttonPressed(sender: AnyObject) {
+        let currentValues = GlobalVariables.itemsArray[ind].split(separator: " ")
+        print(currentValues)
+        tempLabel.text = String(currentValues[0])
+        humLabel.text = String(currentValues[1])
+        ind = ind + 1
+        
+    }
+   
+ 
+
     
     
 }

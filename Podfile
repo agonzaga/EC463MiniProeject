@@ -8,6 +8,8 @@ target 'miniEC463' do
   # Pods for miniEC463
 pod ‘Firebase/Core’
 pod 'Firebase/Auth'
+pod 'Firebase/Storage'
 pod 'GoogleSignIn'
+pod 'GoogleAPIClientForREST/Sheets', '~> 1.2.1'
 
 end
