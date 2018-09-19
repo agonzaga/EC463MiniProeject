@@ -82,14 +82,14 @@
 		E2C63E432148C6C700C97FEF /* miniEC463 */ = {
 			isa = PBXGroup;
 			children = (
-				E2C63E442148C6C700C97FEF /* AppDelegate.swift */,
 				E2C63E462148C6C700C97FEF /* ViewController.swift */,
+				83F5EFCC214F2F1A00B2A9CD /* values.txt */,
+				E2C63E442148C6C700C97FEF /* AppDelegate.swift */,
 				E2C63E482148C6C700C97FEF /* Main.storyboard */,
 				E2C63E4B2148C6C700C97FEF /* Assets.xcassets */,
 				E2C63E4D2148C6C700C97FEF /* LaunchScreen.storyboard */,
 				E2C63E502148C6C700C97FEF /* Info.plist */,
 				83F5EFCA214F2D8000B2A9CD /* GoogleService-Info.plist */,
-				83F5EFCC214F2F1A00B2A9CD /* values.txt */,
 			);
 			path = miniEC463;
 			sourceTree = "<group>";
@@ -212,6 +212,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-miniEC463/Pods-miniEC463-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -219,6 +220,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
