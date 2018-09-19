@@ -1,4 +1,6 @@
 # EC463MiniProject
+#Andre Gonzaga
+#Shivani Singh
 
 The goal of the software project is to work in teams of 2 and create an application that
 has an authentication login to access a database of humidity and temperature values and plot these
