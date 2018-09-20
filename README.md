@@ -25,7 +25,8 @@ stored in Google Storage.
 
 Andre Gonzaga worked on the database and cloud services components of the project; Shivani Singh
 worked on the authentication component. Unfortunately, with Xcode and Swift, there isn't an 
-automatic merging system. Both team members got together, and manually combined their 
+automatic merging system for TWO SEPARATE PROJECTS. Both team members got together, and manually combined their 
 respective components of the project to https://github.com/agonzaga/EC463MiniProject
+Once the 2 projects were combined, version control was possible.
 There is a video that captures the use of the application, which will be emailed to Professor Osama, 
 because GitHub does not support video uploads. 
