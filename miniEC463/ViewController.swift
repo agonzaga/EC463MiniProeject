@@ -58,10 +58,20 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().uiDelegate = self
     }
     
+    @IBAction func signOutOverride(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("Signed Out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setGoogleSignIn()
-    }ß
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
