@@ -11,5 +11,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'GoogleSignIn'
 pod 'GoogleAPIClientForREST/Sheets', '~> 1.2.1'
+pod "Charts"
 
 end

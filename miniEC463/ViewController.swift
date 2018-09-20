@@ -32,9 +32,10 @@ import SQLite3
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
+import Charts
 
 
-class ViewController: UIViewController, GIDSignInUIDelegate {
+class ViewController: UIViewController, GIDSignInUIDelegate, ChartViewDelegate {
     // Global Variables
     let fileName = "values.txt"
     let dbPath = "Users/andregonzaga/Desktop/miniProjectDB"
@@ -61,7 +62,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setGoogleSignIn()
-    }ß
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -228,7 +229,31 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         
     }
    
- 
+    // Plotting
+
+    @IBOutlet weak var chart: LineChartView!
+    
+
+    
+    @IBAction func graphButton(_ sender: Any) {
+        var lineChartEntry = [ChartDataEntry]()
+        var count = 0
+        for item in GlobalVariables.itemsArray {
+            let value = ChartDataEntry(x: Double(count), y: 80)
+            lineChartEntry.append(value)
+            count = count + 1
+        }
+        
+        let tempLine = LineChartDataSet(values: lineChartEntry, label: "Temperature")
+        tempLine.colors = [NSUIColor.blue]
+        
+        let data = LineChartData()
+        data.addDataSet(tempLine)
+        
+        chart.data = data
+        //chart.chartDescription?.text = "Temperature Plot"
+        
+    }
 
     
     
